@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #e2e8f0;
+  --gray: #94a3b8;
+
+  --day-bgc: rgba(6, 66, 122, 0.3);
+  --night-bgc: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  height: 100vh;
+  background: url(./assets/zbynek-skrceny-MSrUdvVrKEE-unsplash.jpg) no-repeat
+    center center fixed;
+  background-size: cover;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.25rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 5vw;
+  color: var(--white);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.header-right {
+  display: flex;
+  align-items: flex-end;
+  flex-flow: column;
+  gap: 10px;
+}
+
+header > h1 {
+  font-size: 1rem;
+}
+
+.toggle-unit-button {
+  appearance: none;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-family: inherit;
+  color: inherit;
+  background: var(--day-bgc);
+  transition: 0.1s ease-in-out;
+}
+
+.toggle-unit-button:hover {
+  transform: scale(1.05);
+}
+
+input[type="search"] {
+  background: none;
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  font-family: inherit;
+  padding: 3px;
+  width: 80%;
+  color: inherit;
+}
+
+input[type="search"]:focus {
+  outline: var(--white) solid 2px;
+  border-bottom: none;
+}
+
+input[type="search"]::placeholder {
+  color: var(--white);
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 50px;
+  margin-bottom: 5vw;
+  background: var(--day-bgc);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.data-left {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 50px;
+}
+
+.data-left > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.lower-temp-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temperature {
+  font-size: 7rem;
+}
+
+.temperature,
+.feels-like {
+  position: relative;
+}
+
+.temperature::after,
+.feels-like::after {
+  position: relative;
+  content: attr(data-unit);
+}
+
+.temperature::after {
+  top: -50%;
+  right: -10px;
+  font-size: 1.5rem;
+}
+
+.feels-like::after {
+  font-size: 0.9rem;
+  top: -30%;
+  right: -1px;
+}
+
+.location {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.location,
+.temperature {
+  font-weight: 500;
+}
+
+.weather-icon {
+  filter: invert(95%) sepia(8%) saturate(241%) hue-rotate(182deg)
+    brightness(97%) contrast(95%);
+  width: 100px;
+}
+
+.data-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.data-right > .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 150px;
+}
+
+.error {
+  font-size: 13.3px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1300px) {
+  .temperature {
+    font-size: 5rem;
+  }
+
+  .location {
+    font-size: 1.5rem;
+  }
+
+  .data-left {
+    gap: 40px;
+  }
+
+  .data-right > .container {
+    gap: 100px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .temperature {
+    font-size: 4rem;
+  }
+
+  .data-left {
+    gap: 30px;
+  }
+
+  .data-right > .container {
+    gap: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    align-items: center;
+    flex-flow: column wrap;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .data-left {
+    grid-template-columns: initial;
+    justify-items: center;
+    gap: 15px;
+  }
+}
