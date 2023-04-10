@@ -3,7 +3,7 @@ const APIKey = "331ebbdb44a940bba2922231233003";
 export default async function getWeatherData(location) {
   try {
     const curWeatherResp = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}`,
+      `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}`,
       { mode: "cors" }
     );
     const curWeatherJSON = await curWeatherResp.json();
